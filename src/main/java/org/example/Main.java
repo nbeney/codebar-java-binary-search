@@ -8,5 +8,7 @@ public class Main {
         System.out.println("linearSearch --> " + SearchUtils.linearSearch(arr, value));
         System.out.println("dichotomicSearchIterative --> " + SearchUtils.dichotomicSearchIterative(arr, value));
         System.out.println("dichotomicSearchRecursive --> " + SearchUtils.dichotomicSearchRecursive(arr, value));
+
+        // Check SearchUtilsTest for more examples.
     }
 }
