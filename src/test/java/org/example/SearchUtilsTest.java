@@ -35,14 +35,14 @@ class SearchUtilsTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/SearchUtilsTest/data.csv", delimiter = ':')
-    void checkDichotomicIterative(final String arrayText, final String valueText, final String expectedText) {
-        check(arrayText, valueText, expectedText, SearchUtils::dichotomicSearchIterative);
+    void checkBinaryIterative(final String arrayText, final String valueText, final String expectedText) {
+        check(arrayText, valueText, expectedText, SearchUtils::binarySearchIterative);
     }
 
     @ParameterizedTest
     @CsvFileSource(resources = "/SearchUtilsTest/data.csv", delimiter = ':')
-    void checkDichotomicRecursive(final String arrayText, final String valueText, final String expectedText) {
-        check(arrayText, valueText, expectedText, SearchUtils::dichotomicSearchRecursive);
+    void checkBinaryRecursive(final String arrayText, final String valueText, final String expectedText) {
+        check(arrayText, valueText, expectedText, SearchUtils::binarySearchRecursive);
     }
 
     private static void check(final String arrayText, final String valueText, final String expectedText, final BiFunction<Integer[], Integer, Integer> search) {

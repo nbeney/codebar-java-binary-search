@@ -10,7 +10,7 @@ public class SearchUtils {
         return -1;
     }
 
-    public static <T extends  Comparable> int dichotomicSearchIterative(final T[] arr, T value) {
+    public static <T extends  Comparable> int binarySearchIterative(final T[] arr, T value) {
         if (arr.length == 0) {
             return -1;
         }
@@ -31,11 +31,11 @@ public class SearchUtils {
         return arr[mid] == value ? mid : -1;
     }
 
-    public static <T extends  Comparable> int dichotomicSearchRecursive(T[] elements, T value) {
-        return dichotomicSearchRecursiveRun(elements, value, 0, elements.length - 1);
+    public static <T extends  Comparable> int binarySearchRecursive(T[] elements, T value) {
+        return binarySearchRecursiveRun(elements, value, 0, elements.length - 1);
     }
 
-    private static <T extends  Comparable> int dichotomicSearchRecursiveRun(T[] elements, T value, int start, int end) {
+    private static <T extends  Comparable> int binarySearchRecursiveRun(T[] elements, T value, int start, int end) {
         if (start > end) {
             return -1;
         } else if (start == end) {
@@ -43,8 +43,8 @@ public class SearchUtils {
         } else {
             final int mid = (start + end) / 2;
             return value.compareTo(elements[mid]) <= 0
-                    ? dichotomicSearchRecursiveRun(elements, value, start, mid)
-                    : dichotomicSearchRecursiveRun(elements, value, mid + 1, end);
+                    ? binarySearchRecursiveRun(elements, value, start, mid)
+                    : binarySearchRecursiveRun(elements, value, mid + 1, end);
         }
     }
 

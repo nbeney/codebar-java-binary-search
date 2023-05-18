@@ -6,8 +6,9 @@ public class Main {
         final int value = 5;
 
         System.out.println("linearSearch --> " + SearchUtils.linearSearch(arr, value));
-        System.out.println("dichotomicSearchIterative --> " + SearchUtils.dichotomicSearchIterative(arr, value));
-        System.out.println("dichotomicSearchRecursive --> " + SearchUtils.dichotomicSearchRecursive(arr, value));
+        System.out.println("binarySearchIterative --> " + SearchUtils.binarySearchIterative(arr, value));
+        System.out.println("binarySearchRecursive --> " + SearchUtils.binarySearchRecursive(arr, value));
+        System.out.println("isSorted --> " + SearchUtils.isSorted(arr));
 
         // Check SearchUtilsTest for more examples.
     }
