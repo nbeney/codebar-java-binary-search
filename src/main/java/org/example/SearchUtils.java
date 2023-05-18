@@ -1,16 +1,16 @@
 package org.example;
 
 public class SearchUtils {
-    public static int linearSearch(final int[] arr, int value) {
+    public static <T extends Comparable> int linearSearch(final T[] arr, T value) {
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == value) {
+            if (arr[i].compareTo(value) == 0) {
                 return i;
             }
         }
         return -1;
     }
 
-    public static int dichotomicSearchIterative(final int[] arr, int value) {
+    public static <T extends  Comparable> int dichotomicSearchIterative(final T[] arr, T value) {
         if (arr.length == 0) {
             return -1;
         }
@@ -20,7 +20,7 @@ public class SearchUtils {
         int mid = (start + end) / 2;
 
         while (start < end) {
-            if (value <= arr[mid]) {
+            if (value.compareTo(arr[mid]) <= 0) {
                 end = mid;
             } else {
                 start = mid + 1;
@@ -31,18 +31,18 @@ public class SearchUtils {
         return arr[mid] == value ? mid : -1;
     }
 
-    public static int dichotomicSearchRecursive(int[] elements, int value) {
+    public static <T extends  Comparable> int dichotomicSearchRecursive(T[] elements, T value) {
         return dichotomicSearchRecursiveRun(elements, value, 0, elements.length - 1);
     }
 
-    private static int dichotomicSearchRecursiveRun(int[] elements, int value, int start, int end) {
+    private static <T extends  Comparable> int dichotomicSearchRecursiveRun(T[] elements, T value, int start, int end) {
         if (start > end) {
             return -1;
         } else if (start == end) {
             return elements[start] == value ? start : -1;
         } else {
             final int mid = (start + end) / 2;
-            return value <= elements[mid]
+            return value.compareTo(elements[mid]) <= 0
                     ? dichotomicSearchRecursiveRun(elements, value, start, mid)
                     : dichotomicSearchRecursiveRun(elements, value, mid + 1, end);
         }

@@ -6,7 +6,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.Arrays;
 import java.util.function.BiFunction;
-import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -23,7 +22,7 @@ class SearchUtilsTest {
             "1,2,3,0:false",
     }, delimiter = ':')
     void checkIsSorted(final String arrayText, final String expectedText) {
-        final Integer[] array = parseArrayText2(arrayText, ",");
+        final Integer[] array = parseArrayText(arrayText, ",");
         final boolean expected = Boolean.parseBoolean(expectedText);
         assertEquals(expected, SearchUtils.isSorted(array));
     }
@@ -46,21 +45,15 @@ class SearchUtilsTest {
         check(arrayText, valueText, expectedText, SearchUtils::dichotomicSearchRecursive);
     }
 
-    private static void check(final String arrayText, final String valueText, final String expectedText, final BiFunction<int[], Integer, Integer> search) {
-        final int[] array = parseArrayText(arrayText, ",");
-        final int value = Integer.parseInt(valueText);
+    private static void check(final String arrayText, final String valueText, final String expectedText, final BiFunction<Integer[], Integer, Integer> search) {
+        final Integer[] array = parseArrayText(arrayText, ",");
+        final Integer value = Integer.parseInt(valueText);
         final int expected = Integer.parseInt(expectedText);
         final int actual = search.apply(array, value);
         assertEquals(expected, actual);
     }
 
-    private static int[] parseArrayText(String arrayText, final String delimiter) {
-        return arrayText == null
-                ? new int[]{}
-                : Stream.of(arrayText.split(delimiter)).mapToInt(Integer::parseInt).toArray();
-    }
-
-    private static Integer[] parseArrayText2(String arrayText, final String delimiter) {
+    private static Integer[] parseArrayText(String arrayText, final String delimiter) {
         return arrayText == null
                 ? new Integer[]{}
                 : Arrays.stream(arrayText.split(delimiter)).map(Integer::parseInt).toArray(Integer[]::new);
