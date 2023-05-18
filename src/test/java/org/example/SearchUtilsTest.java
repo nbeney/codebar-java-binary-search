@@ -4,6 +4,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.Arrays;
 import java.util.function.BiFunction;
 import java.util.stream.Stream;
 
@@ -22,7 +23,7 @@ class SearchUtilsTest {
             "1,2,3,0:false",
     }, delimiter = ':')
     void checkIsSorted(final String arrayText, final String expectedText) {
-        final int[] array = parseArrayText(arrayText, ",");
+        final Integer[] array = parseArrayText2(arrayText, ",");
         final boolean expected = Boolean.parseBoolean(expectedText);
         assertEquals(expected, SearchUtils.isSorted(array));
     }
@@ -57,5 +58,11 @@ class SearchUtilsTest {
         return arrayText == null
                 ? new int[]{}
                 : Stream.of(arrayText.split(delimiter)).mapToInt(Integer::parseInt).toArray();
+    }
+
+    private static Integer[] parseArrayText2(String arrayText, final String delimiter) {
+        return arrayText == null
+                ? new Integer[]{}
+                : Arrays.stream(arrayText.split(delimiter)).map(Integer::parseInt).toArray(Integer[]::new);
     }
 }

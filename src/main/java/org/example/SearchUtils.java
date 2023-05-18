@@ -48,9 +48,9 @@ public class SearchUtils {
         }
     }
 
-    public static boolean isSorted(final int[] array) {
+    public static <T extends Comparable> boolean isSorted(final T[] array) {
         for (int i = 0; i < array.length - 1; i++) {
-            if (array[i] > array[i + 1]) {
+            if (array[i].compareTo(array[i + 1]) > 0) {
                 return false;
             }
         }
