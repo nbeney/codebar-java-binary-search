@@ -2,6 +2,8 @@ package org.example;
 
 import java.util.Arrays;
 
+// comment to trigget github actions
+
 public class Main {
     public static void main(String[] args) {
         demoWithIntegers();
